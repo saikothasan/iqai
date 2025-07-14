@@ -26,8 +26,6 @@ import { serverTimestamp } from 'firebase/firestore';
 import { Skeleton } from './ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 import { AlertCircle } from 'lucide-react';
-import Image from 'next/image';
-
 
 const TEST_DURATION_MINUTES = 15;
 const TOTAL_QUESTIONS = 10;
@@ -214,15 +212,14 @@ export default function TestArea({ testId, testDetails }: TestAreaProps) {
           <>
             <div className="my-6">
               {currentQuestion.imageUrl && (
-                  <div className="mb-4 relative w-full h-64 md:h-96">
-                      <Image 
-                          src={currentQuestion.imageUrl} 
-                          alt="Question visual" 
-                          layout="fill"
-                          objectFit="contain"
-                          className="rounded-md"
-                      />
-                  </div>
+                <div className="mb-4 flex justify-center items-center">
+                  <img
+                    src={currentQuestion.imageUrl}
+                    alt="Question visual"
+                    className="rounded-md max-w-full h-auto max-h-[400px]"
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
               )}
               <h2 className="text-lg md:text-xl font-semibold">{currentQuestion.questionText}</h2>
             </div>
